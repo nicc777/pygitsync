@@ -8,7 +8,7 @@ The idea is that you would have a remote repo, for example on [GitHub](https://g
 
 The strategy would be to create a branch of each local machine and push this branch to the remote when changes are detected. A pull (or merge) request will be created and assuming you are watching your remote repo, you should get a notification.
 
-If changes are merged to `main` (aka `master`, which is no longer being used by GitHub), the `main` branch is feteched and the changes merged to the local machine branch which is again pushed to remote.
+If changes are merged to `main` (aka `master`, which is [no longer being used by GitHub](https://github.com/github/renaming)), the `main` branch is feteched and the changes merged to the local machine branch which is again pushed to remote.
 
 It is a lot more work than traditional solutions, but provides more control over changes with full history (nothing ever gets lost) - and yes, this is partly why I am looking at this, as I have some bad experiences before.
 

@@ -10,13 +10,14 @@ parser.add_argument(
     '--path',
     nargs='*',
     help='One or more local Git repository diretories to auto-sync. By default, the local working directory is used.',
-    default='{}'.format(cwd),
-    action='append'
+    default=['{}'.format(cwd),],
+    dest='paths'
 )
 args = parser.parse_args()
 
 
 def run():
     print('Running from [{}]'.format(cwd))
-    print('Local directories: {}'.format(args.path))
+    for path in args.paths:
+        print('Current repo directory: {}'.format(path))
 

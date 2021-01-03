@@ -18,14 +18,33 @@ parser.add_argument(
     dest='paths',
     metavar='PATH'
 )
+parser.add_argument(
+    '--verbose',
+    '-v',
+    action='count',
+    default=0,
+    dest='verbosity',
+    help='Set verbosity level. Add multiple times to add verbosity (up to three times). Specify at least once to get exception trace dumps.'
+)
 args = parser.parse_args()
+
+
+DUMP_ERRORS = False
+if args.verbosity > 0:
+    print('Verbosity level: {}'.format(args.verbosity))
+    DUMP_ERRORS = True
+
+
+def dump_error(trace_str: str):
+    if DUMP_ERRORS is True and trace_str is not None:
+        print('EXCEPTION: {}'.format(trace_str))
 
 
 def create_repo_obj(path: str)->Repo:
     try:
         return Repo(os.path.join(path))
     except:
-        print('EXCEPTION: {}'.format(traceback.format_exc()))
+        dump_error(trace_str=traceback.format_exc())
     return None
 
 
